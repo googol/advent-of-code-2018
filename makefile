@@ -1,4 +1,4 @@
-.PHONY: clean 01 02
+.PHONY: clean 01 02 03
 
 .stamps/build: .stamps/dependencies src/*.purs
 	psc-package build
@@ -13,6 +13,9 @@
 
 02: .stamps/build
 	node runner.js AoC.Day02
+
+03: .stamps/build
+	node runner.js AoC.Day03
 
 .stamps:
 	mkdir .stamps
