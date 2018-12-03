@@ -9,6 +9,7 @@
     "lists",
     "node-fs",
     "ordered-collections",
-    "prelude"
+    "prelude",
+    "psci-support"
   ]
 }
