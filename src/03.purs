@@ -1,9 +1,7 @@
 module AoC.Day03 where
 
 import Prelude
-import Node.FS.Sync (readTextFile)
-import Node.Encoding (Encoding(..))
-import Effect.Console (log)
+import AoC.Common
 import Data.String
 import Data.Array as A
 import Data.Tuple
@@ -75,9 +73,4 @@ part2 = bindFlipped claimToCoordsAndName >>> makeMap >>> (\m -> A.difference (un
     overlappingClaimNames :: Map Coord (L.List String) -> Array String
     overlappingClaimNames = uniqueClaimNames <<< filter (\x -> length x > 1)
 
-main = do
-  input <- readTextFile UTF8 "input/03"
-  let part1ParsedInput = parseInput input
-  let part2ParsedInput = parseInput input
-  log $ "part one: " <> (show $ part1 part1ParsedInput)
-  log $ "part two: " <> (show $ part2 part2ParsedInput)
+main = commonMain "03" (parseInput >>> part1) (parseInput >>> part2)

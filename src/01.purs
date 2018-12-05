@@ -1,10 +1,8 @@
 module AoC.Day01 where
 
 import Prelude
+import AoC.Common
 import Data.Int (fromString)
-import Node.FS.Sync (readTextFile)
-import Node.Encoding (Encoding(..))
-import Effect.Console (log)
 import Data.Foldable (sum)
 import Data.String.Common (split)
 import Data.String.Pattern (Pattern(..))
@@ -41,8 +39,4 @@ part2 ls = foldWithCarry doCalculation (Tuple 0 (S.singleton 0)) (LL.cycle ls)
         true -> Right newNum
         false -> Left $ Tuple newNum (S.insert newNum xs)
 
-main = do
-  input <- readTextFile UTF8 "input/01"
-  let parsedInput = parseInput input
-  log $ "part one: " <> (show $ part1 parsedInput)
-  log $ "part two: " <> (show $ part2 parsedInput) -- $ fromFoldable [2,1,-1,4])
+main = commonMain "01" (parseInput >>> part1) (parseInput >>> part2)

@@ -1,9 +1,7 @@
 module AoC.Day02 where
 
 import Prelude
-import Node.FS.Sync (readTextFile)
-import Node.Encoding (Encoding(..))
-import Effect.Console (log)
+import AoC.Common
 import Data.String
 import Data.Array as A
 import Data.Tuple
@@ -75,9 +73,4 @@ part2 = fromCodePointArray <<< (uncurry removeDifferents) <<< fromMaybe defaultT
     xprod L.Nil = L.Nil
     xprod (L.Cons x xs) = (map (\b -> Tuple x b) xs) <> (xprod xs)
 
-main = do
-  input <- readTextFile UTF8 "input/02"
-  let part1ParsedInput = parsePart1Input input
-  let part2ParsedInput = parsePart2Input input
-  log $ "part one: " <> (show $ part1 part1ParsedInput)
-  log $ "part two: " <> (show $ part2 part2ParsedInput)
+main = commonMain "02" (parsePart1Input >>> part1) (parsePart2Input >>> part2)
