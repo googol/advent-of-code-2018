@@ -20,5 +20,5 @@ $(DAYS): .stamps/build
 
 clean:
 	rm -rf output
-	rm -rf psc-package
+	rm -rf .psc-package
 	rm -rf .stamps
