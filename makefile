@@ -1,4 +1,4 @@
-DAYS = 01 02 03 04
+DAYS = 01 02 03 04 05
 
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
 
