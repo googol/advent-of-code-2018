@@ -10,6 +10,7 @@
     "node-fs",
     "ordered-collections",
     "prelude",
-    "psci-support"
+    "psci-support",
+    "string-parsers"
   ]
 }

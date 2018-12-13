@@ -18,3 +18,12 @@ commonMain day part1 part2 = do
   input <- readTextFile UTF8 inputFile
   log $ "part one: " <> (show $ part1 input)
   log $ "part two: " <> (show $ part2 input)
+
+combineLines :: forall a. Foldable a => a String -> String
+combineLines = foldMap (_ <> "\n")
+
+sortLines :: String -> String
+sortLines = split (Pattern "\n") >>> A.filter (_ /= "") >>> A.sort >>> combineLines
+
+charArrayToInt :: Array Char -> Maybe Int
+charArrayToInt = fromString <<< fromCodePointArray <<< (map codePointFromChar)
